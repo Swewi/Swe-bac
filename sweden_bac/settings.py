@@ -34,12 +34,16 @@ ALLOWED_HOSTS = ['.herokuapp.com', os.environ.get("ALLOWED_HOST")]
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',  # Custom admin interface - loaded here as per Jazzmin page requirements
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
+    'crispy_bootstrap5',
+    'django_summernote',
     'about',
     'blog',
     'contact',
