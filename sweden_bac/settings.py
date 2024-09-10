@@ -18,6 +18,11 @@ if os.path.isfile('env.py'):
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Cloudinary imports
+
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -41,9 +46,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary_storage',  # Cloudinary storage for media files
     'crispy_forms',
     'crispy_bootstrap5',
     'django_summernote',
+    'cloudinary',
     'about',
     'blog',
     'contact',
@@ -53,6 +60,11 @@ INSTALLED_APPS = [
     'shop',
     'videos',
 ]
+
+# Configure Crispy Forms to use Bootstrap 5
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -142,3 +154,73 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Summernote Settings
+
+SUMMERNOTE_CONFIG = {
+    'width': '100%',
+    'height': 400,
+    'toolbar': [
+        ['style', ['style']],
+        ['font', ['bold', 'underline', 'clear']],
+        ['color', ['color']],
+        ['para', ['ul', 'ol', 'paragraph']],
+        ['view', ['fullscreen', 'codeview', 'help']]
+    ],
+    'callbacks': {
+        'onInit': 'function() { console.log("Summernote is initialized."); }'
+    },
+}
+
+# Cloudinary configuration for media storage
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.environ.get("CLOUDINARY_CLOUD_NAME"),
+    'API_KEY': os.environ.get("CLOUDINARY_API_KEY"),
+    'API_SECRET': os.environ.get("CLOUDINARY_API_SECRET"),
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+# Jazzmin Settings for customizing the admin interface
+
+JAZZMIN_SETTINGS = {
+    "site_title": "Werecat Blog",
+    "site_header": "Werecat",
+    "site_brand": "Werecat Industries",
+    "site_icon": "images/favicon.png",
+    "site_logo": None,
+    "welcome_sign": "Welcome to the Werecat Blog",
+    "copyright": "Werecat Blog",
+    "user_avatar": None,
+    "topmenu_links": [
+        {"name": "Werecat Blog", "url": "home", "permissions": ["auth.view_user"]},
+        {"model": "auth.User"},
+    ],
+    "show_sidebar": True,
+    "navigation_expanded": True,
+    "order_with_respect_to": ["auth", "blog", "posts", "comments", "users.User"],
+    "icons": {
+        "auth": "fas fa-users-cog",
+        "auth.user": "fas fa-user",
+        "users.User": "fas fa-user",
+        "auth.Group": "fas fa-users",
+        "admin.LogEntry": "fas fa-file",
+    },
+    "default_icon_parents": "fas fa-chevron-circle-right",
+    "default_icon_children": "fas fa-arrow-circle-right",
+    "related_modal_active": False,
+    "show_ui_builder": False,
+    "changeform_format": "horizontal_tabs",
+    "changeform_format_overrides": {
+        "auth.user": "collapsible",
+        "auth.group": "vertical_tabs",
+    },
+    "hide_apps": ["django_summernote", "sites", "socialaccount"],
+}
+
+# Jazzmin UI tweaks
+
+JAZZMIN_UI_TWEAKS = {
+    "theme": "cyborg",
+}
