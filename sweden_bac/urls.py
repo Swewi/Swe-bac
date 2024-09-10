@@ -20,5 +20,12 @@ from blog import views as index_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('blog/', include('blog.urls')),
+    path('about/', include('about.urls'), name="about"),
+    path('blog/', include('blog.urls'), name="blog"),
+    path('contact/', include('contact.urls'), name="contact"),
+    path('events/', include('events.urls'), name='events'),
+    path('gallery/', include('gallery.urls'), name="gallery"),
+    path('routes/', include('routes.urls'), name="routes"),
+    path('shop/', include('shop.urls'), name="shop"),
+    path('videos/', include('videos.urls'), name="video"),
 ]
