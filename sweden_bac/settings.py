@@ -185,16 +185,16 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 # Jazzmin Settings for customizing the admin interface
 
 JAZZMIN_SETTINGS = {
-    "site_title": "Werecat Blog",
-    "site_header": "Werecat",
-    "site_brand": "Werecat Industries",
+    "site_title": "Sweden's BAC",
+    "site_header": "SWE-BAC",
+    "site_brand": "Sweden's BAC",
     "site_icon": "images/favicon.png",
     "site_logo": None,
-    "welcome_sign": "Welcome to the Werecat Blog",
-    "copyright": "Werecat Blog",
+    "welcome_sign": "Welcome to Sweden's branch of the Bicycle Adventure Club",
+    "copyright": "SWE-BAC",
     "user_avatar": None,
     "topmenu_links": [
-        {"name": "Werecat Blog", "url": "home", "permissions": ["auth.view_user"]},
+        {"name": "SWE-BAC", "url": "home", "permissions": ["auth.view_user"]},
         {"model": "auth.User"},
     ],
     "show_sidebar": True,
