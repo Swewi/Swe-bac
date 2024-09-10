@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-na8!99q61^%ykeasmhy=cixe0^f=e+a9(-p_u=5m&77-lsc(6)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True # Set false for release
 
-ALLOWED_HOSTS = [os.environ.get("ALLOWED_HOST")]
+ALLOWED_HOSTS = ['.herokuapp.com', os.environ.get("ALLOWED_HOST")]
 
 
 # Application definition
@@ -91,6 +91,12 @@ DATABASES = {
     }
 }
 
+# Trusted origins for CSRF protection
+
+CSRF_TRUSTED_ORIGINS = [
+    os.environ.get("ALLOWED_HOST"),
+    "https://*.herokuapp.com"
+]
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators

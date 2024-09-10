@@ -16,7 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from blog import views as index_views
+from blog import views as blog
+from about import views as about
+from contact import views as contact
+from events import views as events
+from gallery import views as gallery
+from routes import views as routes
+from shop import views as shop
+from videos import views as videos
 
 urlpatterns = [
     path('admin/', admin.site.urls),

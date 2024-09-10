@@ -1,0 +1,1 @@
+web: gunicorn sweden_bac.wsgi
